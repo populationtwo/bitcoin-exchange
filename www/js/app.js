@@ -1,4 +1,4 @@
-angular.module('App', ['ionic'])
+angular.module('App', ['ionic', 'highcharts-ng'])
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -18,10 +18,11 @@ angular.module('App', ['ionic'])
         }
       })
       .state('tabs.history', {
-        url: '/history',
+        url: '/history?currency',
         views: {
           'history-tab': {
-            templateUrl: 'views/history/history.html'
+            templateUrl: 'views/history/history.html',
+            controller: 'HistoryController'
           }
         }
       })
@@ -30,6 +31,15 @@ angular.module('App', ['ionic'])
         views: {
           'currencies-tab': {
             templateUrl: 'views/currencies/currencies.html'
+          }
+        }
+      })
+      .state('tabs.detail', {
+        url: '/detail/:currency',
+        views: {
+          'rates-tab': {
+            templateUrl: 'views/detail/detail.html',
+            controller: 'DetailController'
           }
         }
       });
